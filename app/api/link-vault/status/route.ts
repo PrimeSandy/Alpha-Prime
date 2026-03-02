@@ -1,9 +1,7 @@
 import { NextResponse } from 'next/server';
 import mongoose from 'mongoose';
-import bcrypt from 'bcryptjs';
 import { z } from 'zod';
 import { LinkVault } from '@/lib/models/linkVault';
-import { normalizeUrl } from '@/lib/utils/normalizeUrl';
 
 const schema = z.object({
     id: z.string(),

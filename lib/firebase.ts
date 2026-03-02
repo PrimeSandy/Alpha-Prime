@@ -12,8 +12,8 @@ const firebaseConfig = {
 
 // Initialize Firebase only if config is available to prevent build-time crashes
 let app;
-let auth: Auth | any;
-let googleProvider: GoogleAuthProvider | any;
+let auth: Auth;
+let googleProvider: GoogleAuthProvider;
 
 if (firebaseConfig.apiKey) {
     app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
@@ -23,8 +23,8 @@ if (firebaseConfig.apiKey) {
     // Provide safe fallbacks for build time or missing environment variables
     auth = new Proxy({}, {
         get: () => () => ({ unsubscribe: () => { } })
-    });
-    googleProvider = {};
+    }) as unknown as Auth;
+    googleProvider = {} as GoogleAuthProvider;
 }
 
 export { auth, googleProvider };

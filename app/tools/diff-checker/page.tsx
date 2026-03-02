@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useState, useEffect } from 'react';
-import { GitCompare, Copy, RotateCcw } from 'lucide-react';
+import { GitCompare, RotateCcw } from 'lucide-react';
 import * as Diff from 'diff';
 import FAQSection from '@/components/FAQSection';
 
@@ -35,15 +35,10 @@ export default function DiffChecker() {
         } else {
             result = Diff.diffChars(text1, text2);
         }
-        setDiffResult(result);
+        setTimeout(() => setDiffResult(result), 0);
     }, [text1, text2, mode]);
 
-    const copyToClipboard = () => {
-        // Copy merged text? Or just notify?
-        // For diff, copying isn't straightforward. Maybe copy original or modified?
-        // Let's copy the "New" text for now as a utility
-        navigator.clipboard.writeText(text2);
-    };
+
 
     return (
         <div className="max-w-6xl mx-auto px-4 py-6 sm:py-12">

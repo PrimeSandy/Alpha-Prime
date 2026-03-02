@@ -4,7 +4,27 @@ import { useEffect } from "react"
 
 declare global {
     interface Window {
-        google: any
+        google: {
+            accounts: {
+                id: {
+                    initialize: (config: {
+                        client_id: string;
+                        callback: (response: unknown) => void;
+                        auto_select?: boolean;
+                        cancel_on_tap_outside?: boolean;
+                        context?: string;
+                        itp_support?: boolean;
+                    }) => void;
+                    prompt: (callback?: (notification: {
+                        isNotDisplayed: () => boolean;
+                        getNotDisplayedReason: () => string;
+                        isSkippedMoment: () => boolean;
+                        getSkippedReason: () => string;
+                    }) => void) => void;
+                    cancel: () => void;
+                }
+            }
+        }
     }
 }
 
@@ -21,7 +41,7 @@ export default function GoogleOneTap() {
 
             window.google.accounts.id.initialize({
                 client_id: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID!,
-                callback: async (response: any) => {
+                callback: async () => {
                     await signIn("google", {
                         redirect: false,
                     })
@@ -32,7 +52,7 @@ export default function GoogleOneTap() {
                 itp_support: true,        // iOS support
             })
 
-            window.google.accounts.id.prompt((notification: any) => {
+            window.google.accounts.id.prompt((notification) => {
                 if (notification.isNotDisplayed()) {
                     console.log("One Tap not displayed:",
                         notification.getNotDisplayedReason())

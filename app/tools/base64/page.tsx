@@ -30,17 +30,19 @@ export default function Base64Converter() {
         if (typeof window !== 'undefined') {
             const savedHistory = localStorage.getItem('base64History');
             if (savedHistory) {
-                setHistory(JSON.parse(savedHistory));
+                setTimeout(() => setHistory(JSON.parse(savedHistory as string)), 0);
             }
         }
     }, []);
 
     // Update stats
     useEffect(() => {
-        setStats({
-            inputSize: new Blob([input]).size,
-            outputSize: new Blob([output]).size
-        });
+        setTimeout(() => {
+            setStats({
+                inputSize: new Blob([input]).size,
+                outputSize: new Blob([output]).size
+            });
+        }, 0);
     }, [input, output]);
 
     const handleEncode = () => {
@@ -53,7 +55,7 @@ export default function Base64Converter() {
             const encoded = btoa(unescape(encodeURIComponent(input)));
             setOutput(encoded);
             addToHistory(input, encoded, 'encode');
-        } catch (e) {
+        } catch {
             setError('Unable to encode. Ensure input is valid text.');
         }
     };
@@ -68,7 +70,7 @@ export default function Base64Converter() {
             const decoded = decodeURIComponent(escape(atob(input)));
             setOutput(decoded);
             addToHistory(input, decoded, 'decode');
-        } catch (e) {
+        } catch {
             setError('Invalid Base64 string.');
         }
     };

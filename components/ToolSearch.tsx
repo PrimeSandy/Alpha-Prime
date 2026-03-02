@@ -85,11 +85,14 @@ export default function ToolSearch() {
 
     // Load favorites from localStorage
     useEffect(() => {
-        try {
-            const saved = localStorage.getItem('ap_favorites');
-            if (saved) setFavorites(new Set(JSON.parse(saved)));
-        } catch {
-            // ignore
+        const saved = localStorage.getItem('ap_favorites');
+        if (saved) {
+            try {
+                const parsed = JSON.parse(saved);
+                setTimeout(() => setFavorites(new Set(parsed)), 0);
+            } catch {
+                // ignore
+            }
         }
     }, []);
 
@@ -121,7 +124,11 @@ export default function ToolSearch() {
         e.stopPropagation();
         setFavorites(prev => {
             const next = new Set(prev);
-            next.has(id) ? next.delete(id) : next.add(id);
+            if (next.has(id)) {
+                next.delete(id);
+            } else {
+                next.add(id);
+            }
             try { localStorage.setItem('ap_favorites', JSON.stringify([...next])); } catch { /* ignore */ }
             return next;
         });

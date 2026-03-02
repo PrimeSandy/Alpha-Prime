@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useSession, signIn } from "next-auth/react";
-import { ThumbsUp, ThumbsDown, Send, LogIn, User, Trash2, ChevronDown, ChevronUp, ShieldCheck } from 'lucide-react';
+import { ThumbsUp, ThumbsDown, Send, LogIn, User, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
 
 const ADMIN_EMAIL = "alphaprime.co.in@gmail.com";
 
@@ -25,9 +25,9 @@ interface Comment {
 export default function CommentSection() {
     const [comments, setComments] = useState<Comment[]>([]);
     const [newComment, setNewComment] = useState('');
-    const { data: session, status } = useSession();
+    const { data: session } = useSession();
     const user = session?.user ? {
-        uid: (session.user as any).id,
+        uid: (session.user as { id: string }).id,
         displayName: session.user.name || "",
         photoURL: session.user.image || "",
         email: session.user.email || ""
@@ -61,9 +61,10 @@ export default function CommentSection() {
     const handleLogin = async () => {
         try {
             await signIn("google");
-        } catch (error: any) {
+        } catch (error: unknown) {
             console.error("Login failed", error);
-            alert(`Login failed: ${error.message || 'Please try again later.'}`);
+            const errorMessage = error instanceof Error ? error.message : 'Please try again later.';
+            alert(`Login failed: ${errorMessage}`);
         }
     };
 
@@ -113,9 +114,9 @@ export default function CommentSection() {
             // Optimistic update
             setComments(comments.map(c => {
                 if (c._id === commentId) {
-                    let updatedComment = { ...c };
-                    const hasLiked = c.likedBy?.includes(user.uid);
-                    const hasDisliked = c.dislikedBy?.includes(user.uid);
+                    const updatedComment = { ...c };
+                    const hasLiked = c.likedBy?.includes(user!.uid);
+                    const hasDisliked = c.dislikedBy?.includes(user!.uid);
 
                     if (action === 'like') {
                         if (hasLiked) {
@@ -262,9 +263,11 @@ export default function CommentSection() {
                                     <div className="flex flex-wrap justify-between items-center mt-3 gap-3">
                                         <div className="flex items-center gap-2 bg-gray-50 px-3 py-1.5 rounded-full border border-gray-200 max-w-full overflow-hidden">
                                             {(!imgError && user.photoURL) ? (
-                                                <img
+                                                <Image
                                                     src={user.photoURL}
                                                     alt={user.displayName}
+                                                    width={20}
+                                                    height={20}
                                                     className="w-5 h-5 rounded-full"
                                                     onError={() => setImgError(true)}
                                                 />
@@ -336,7 +339,7 @@ export default function CommentSection() {
 interface CommentItemProps {
     comment: Comment;
     allComments: Comment[];
-    user: any;
+    user: { uid: string; email: string; displayName: string; photoURL: string } | null;
     handleReaction: (id: string, action: 'like' | 'dislike') => void;
     handleDelete: (id: string) => void;
     handlePostComment: (e: React.FormEvent, parentId: string | null) => void;
@@ -382,14 +385,15 @@ function CommentItem({
             <div className={`flex gap-4 p-3 rounded-xl transition-colors group ${isAdminComment ? 'bg-amber-50/30' : 'hover:bg-gray-50'}`}>
                 <div className={`${isReply ? 'w-8 h-8' : 'w-10 h-10'} rounded-full flex-shrink-0 bg-gray-100 flex items-center justify-center border-2 ${isAdminComment ? 'border-amber-400' : 'border-gray-100'} overflow-hidden`}>
                     {comment.photoURL ? (
-                        <img
+                        <Image
                             src={comment.photoURL}
                             alt={comment.displayName}
+                            width={40}
+                            height={40}
                             className="w-full h-full object-cover"
                             onError={(e) => {
                                 (e.target as HTMLImageElement).style.display = 'none';
                                 (e.target as HTMLImageElement).parentElement!.classList.add('bg-gray-100');
-                                (e.target as HTMLImageElement).parentElement!.innerHTML = '<svg class="w-5 h-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>';
                             }}
                         />
                     ) : (

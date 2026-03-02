@@ -1,6 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
-import { AlertTriangle, Scale, Code, Banknote, ShieldAlert, Mail } from 'lucide-react';
+import { AlertTriangle, Scale, Code, ShieldAlert, Mail } from 'lucide-react';
 
 export const metadata = {
     title: 'Disclaimer - AlphaPrime',

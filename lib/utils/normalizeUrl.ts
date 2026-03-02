@@ -11,7 +11,7 @@ export function normalizeUrl(url: string): string {
         }
 
         return normalized;
-    } catch (e) {
+    } catch {
         // Fallback if somehow not a valid URL
         let normalized = url.trim();
         // lower case domain roughly
@@ -20,7 +20,7 @@ export function normalizeUrl(url: string): string {
             if (match) {
                 normalized = match[1].toLowerCase() + match[2].toLowerCase() + match[3];
             }
-        } catch (err) {
+        } catch {
             // ignore
         }
         if (normalized.endsWith('/')) {

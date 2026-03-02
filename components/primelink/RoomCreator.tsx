@@ -60,9 +60,10 @@ export default function RoomCreator({ token, name, onJoinRoom }: RoomCreatorProp
                 // Immediately enter room — invite link is shown inside ChatWindow
                 onJoinRoom(data.id, data.room_code, data.visual_id, link);
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Failed to create room:", err);
-            setError(err.message || "Could not create room. Try again.");
+            const errorMessage = err instanceof Error ? err.message : "Could not create room. Try again.";
+            setError(errorMessage);
         } finally {
             setIsCreating(false);
         }

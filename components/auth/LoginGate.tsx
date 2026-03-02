@@ -14,7 +14,7 @@ export default function LoginGate({
     message = "Sign in to continue",
     subtitle = "Use your Google account — just one tap!"
 }: LoginGateProps) {
-    const { data: session, status } = useSession()
+    const { status } = useSession()
 
     // Loading state
     if (status === "loading") {
@@ -38,9 +38,11 @@ export default function LoginGate({
 
                         {/* Logo */}
                         <div className="flex justify-center mb-6">
-                            <img
+                            <Image
                                 src="/logo.png"
                                 alt="AlphaPrime Logo"
+                                width={180}
+                                height={48}
                                 className="h-12 w-auto"
                             />
                         </div>

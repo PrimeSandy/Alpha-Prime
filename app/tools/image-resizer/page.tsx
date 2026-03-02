@@ -7,7 +7,7 @@ import { Download } from 'lucide-react';
 import { Image as ImageIcon } from 'lucide-react';
 import { Settings } from 'lucide-react';
 import { Check } from 'lucide-react';
-import { Trash2 } from 'lucide-react';
+
 import { Info } from 'lucide-react';
 import { AlertCircle } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';

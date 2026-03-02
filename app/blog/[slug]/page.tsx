@@ -2,7 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { blogPosts, BlogPost } from '@/lib/blog-data';
+import { blogPosts } from '@/lib/blog-data';
 
 // 1. Generate Static Params for all 10 blog posts
 export async function generateStaticParams() {

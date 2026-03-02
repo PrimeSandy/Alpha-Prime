@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 const fs = require('fs');
 const path = require('path');
 
@@ -43,6 +44,6 @@ try {
     processDir('./app');
     processDir('./components');
     console.log('Done darkening text colors.');
-} catch (e) {
-    console.error(e);
+} catch (_e) {
+    console.error(_e);
 }

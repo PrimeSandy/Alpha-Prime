@@ -5,7 +5,7 @@ import {
     Lock, Unlock, Eye, EyeOff, Save, Key, Shield, AlertTriangle,
     Link as LinkIcon, LockKeyhole, MessageSquare, CornerUpRight,
     Image as ImageIcon, FileText, CheckCircle2, ListOrdered,
-    Pencil, X, RefreshCcw, PauseCircle, PlayCircle, Trash2, Share2, Copy, CheckCheck
+    Pencil, X, RefreshCcw, PauseCircle, PlayCircle, Trash2, Copy, CheckCheck
 } from 'lucide-react';
 
 type ActionType = 'message' | 'redirect' | 'image' | 'note';
@@ -64,8 +64,6 @@ export default function LinkVault() {
     /* ── SHARED MODAL ── */
     const [modalMode, setModalMode] = useState<ModalMode>(null);
     const [modalTarget, setModalTarget] = useState<VaultRecord | null>(null);
-    const [modalPassword, setModalPassword] = useState('');
-    const [showModalPassword, setShowModalPassword] = useState(false);
     const [modalLoading, setModalLoading] = useState(false);
     const [modalError, setModalError] = useState('');
     const [modalSuccess, setModalSuccess] = useState('');
@@ -140,8 +138,6 @@ export default function LinkVault() {
     const openModal = (mode: ModalMode, rec: VaultRecord) => {
         setModalMode(mode);
         setModalTarget(rec);
-        setModalPassword('');
-        setShowModalPassword(false);
         setModalError('');
         setModalSuccess('');
         setEditActionType(rec.actionType);

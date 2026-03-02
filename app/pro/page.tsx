@@ -2,8 +2,7 @@
 
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import { Rocket, ShieldCheck, Zap, Server, Database, Crown } from "lucide-react";
-import Link from "next/link";
+import { ShieldCheck, Zap, Database, Crown } from "lucide-react";
 
 export default function ProFeatures() {
     return (

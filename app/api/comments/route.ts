@@ -113,7 +113,10 @@ export async function PATCH(request: NextRequest) {
             }
         }
 
-        const result = await collection.updateOne({ _id: new ObjectId(commentId) }, updateQuery as any);
+        const result = await collection.updateOne(
+            { _id: new ObjectId(commentId) },
+            updateQuery as Record<string, unknown>
+        );
 
         if (result.modifiedCount === 1) {
             const updatedComment = await collection.findOne({ _id: new ObjectId(commentId) });

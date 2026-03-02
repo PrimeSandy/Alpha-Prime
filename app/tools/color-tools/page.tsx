@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useCallback } from 'react';
 import { Copy, RefreshCw, Palette, Layers, Contrast, Droplet, CheckCircle, AlertCircle, ArrowRight } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';
 
@@ -37,7 +37,8 @@ const rgbToHex = (r: number, g: number, b: number) => {
 const rgbToHsl = (r: number, g: number, b: number) => {
     r /= 255; g /= 255; b /= 255;
     const max = Math.max(r, g, b), min = Math.min(r, g, b);
-    let h = 0, s = 0, l = (max + min) / 2;
+    let h = 0, s = 0;
+    const l = (max + min) / 2;
 
     if (max === min) {
         h = s = 0;
@@ -122,13 +123,7 @@ export default function ColorTools() {
     };
 
     // --- Picker Logic ---
-    useEffect(() => {
-        if (activeTab === 'picker' && canvasRef.current) {
-            drawColorWheel(canvasRef.current);
-        }
-    }, [activeTab]);
-
-    const drawColorWheel = (canvas: HTMLCanvasElement) => {
+    const drawColorWheel = useCallback((canvas: HTMLCanvasElement) => {
         const ctx = canvas.getContext('2d');
         if (!ctx) return;
         const width = canvas.width;
@@ -161,7 +156,13 @@ export default function ColorTools() {
             }
         }
         ctx.putImageData(imageData, 0, 0);
-    };
+    }, []);
+
+    useEffect(() => {
+        if (activeTab === 'picker' && canvasRef.current) {
+            drawColorWheel(canvasRef.current);
+        }
+    }, [activeTab, drawColorWheel]);
 
     const handleCanvasClick = (e: React.MouseEvent<HTMLCanvasElement>) => {
         if (!canvasRef.current) return;
@@ -201,24 +202,23 @@ export default function ColorTools() {
 
     // --- Contrast Logic ---
     useEffect(() => {
-        const c1 = contrastFg.startsWith('#') ? contrastFg : '#' + contrastFg;
-        const c2 = contrastBg.startsWith('#') ? contrastBg : '#' + contrastBg;
+        const calculateContrast = () => {
+            const c1 = contrastFg.startsWith('#') ? contrastFg : '#' + contrastFg;
+            const c2 = contrastBg.startsWith('#') ? contrastBg : '#' + contrastBg;
 
-        if (/^#[0-9A-Fa-f]{6}$/.test(c1) && /^#[0-9A-Fa-f]{6}$/.test(c2)) {
-            const lum1 = getLuminance(...hexToRgb(c1) as [number, number, number]);
-            const lum2 = getLuminance(...hexToRgb(c2) as [number, number, number]);
-            const bright = Math.max(lum1, lum2);
-            const dark = Math.min(lum1, lum2);
-            setContrastRatio((bright + 0.05) / (dark + 0.05));
-        }
+            if (/^#[0-9A-Fa-f]{6}$/.test(c1) && /^#[0-9A-Fa-f]{6}$/.test(c2)) {
+                const lum1 = getLuminance(...hexToRgb(c1) as [number, number, number]);
+                const lum2 = getLuminance(...hexToRgb(c2) as [number, number, number]);
+                const bright = Math.max(lum1, lum2);
+                const dark = Math.min(lum1, lum2);
+                setContrastRatio((bright + 0.05) / (dark + 0.05));
+            }
+        };
+        calculateContrast();
     }, [contrastFg, contrastBg]);
 
     // --- Palette Logic ---
-    useEffect(() => {
-        generatePalette(paletteBase);
-    }, [paletteBase]);
-
-    const generatePalette = (hexStr: string) => {
+    const generatePalette = useCallback((hexStr: string) => {
         if (!hexStr.startsWith('#')) hexStr = '#' + hexStr;
         if (!/^#[0-9A-Fa-f]{6}$/.test(hexStr)) return;
 
@@ -240,7 +240,12 @@ export default function ColorTools() {
             newTints.push(rgbToHex(nR, nG, nB));
         }
         setTints(newTints);
-    };
+    }, []);
+
+    useEffect(() => {
+        const timer = setTimeout(() => generatePalette(paletteBase), 0);
+        return () => clearTimeout(timer);
+    }, [paletteBase, generatePalette]);
 
     const copyToClipboard = (text: string) => {
         navigator.clipboard.writeText(text);
@@ -307,8 +312,8 @@ export default function ColorTools() {
 
                         <div className="space-y-6">
                             {[
-                                { label: 'HEX', value: convHex, onChange: (e: any) => updateConverter(e.target.value, 'hex') },
-                                { label: 'RGB', value: convRgb, onChange: (e: any) => updateConverter(e.target.value, 'rgb') },
+                                { label: 'HEX', value: convHex, onChange: (e: React.ChangeEvent<HTMLInputElement>) => updateConverter(e.target.value, 'hex') },
+                                { label: 'RGB', value: convRgb, onChange: (e: React.ChangeEvent<HTMLInputElement>) => updateConverter(e.target.value, 'rgb') },
                                 { label: 'HSL', value: convHsl, readOnly: true }
                             ].map((field) => (
                                 <div key={field.label}>
@@ -497,7 +502,7 @@ export default function ColorTools() {
                         >
                             <h2 className="text-3xl font-bold mb-4">Sample Headline</h2>
                             <p className="text-lg max-w-sm mb-8 opacity-90">
-                                This is how your text looks against the background. Ensure it's readable for everyone.
+                                This is how your text looks against the background. Ensure it&apos;s readable for everyone.
                             </p>
 
                             <div className="flex gap-8 text-xs font-bold opacity-80">

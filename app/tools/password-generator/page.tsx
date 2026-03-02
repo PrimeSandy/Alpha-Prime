@@ -86,14 +86,14 @@ export default function PasswordGenerator() {
         if (typeof window !== 'undefined') {
             const savedHistory = localStorage.getItem('passwordHistory');
             if (savedHistory) {
-                setHistory(JSON.parse(savedHistory));
+                setTimeout(() => setHistory(JSON.parse(savedHistory!)), 0);
             }
         }
     }, []);
 
     // Regenerate when options change, but keep it stable on first mount
     useEffect(() => {
-        generatePassword();
+        setTimeout(() => generatePassword(), 0);
     }, [length, options, generatePassword]);
 
     const addToHistory = (pwd: string) => {
@@ -287,11 +287,11 @@ export default function PasswordGenerator() {
                 <h2 className="text-3xl font-bold text-black mb-6 relative z-10">How Our Password Generator Works</h2>
                 <div className="prose prose-gray max-w-none text-gray-800 space-y-4 relative z-10">
                     <p>
-                        In today's digital landscape, relying on simple or reused passwords is one of the most common security vulnerabilities. Our Secure Password Generator creates highly randomized, complex passwords that are virtually impossible for hackers or brute-force algorithms to guess. Your online safety is paramount, which is why everything happens directly in your browser. <strong>Your passwords are never generated on, nor transmitted to, a remote server.</strong>
+                        In today&apos;s digital landscape, relying on simple or reused passwords is one of the most common security vulnerabilities. Our Secure Password Generator creates highly randomized, complex passwords that are virtually impossible for hackers or brute-force algorithms to guess. Your online safety is paramount, which is why everything happens directly in your browser. <strong>Your passwords are never generated on, nor transmitted to, a remote server.</strong>
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">The Generation Algorithm</h3>
                     <p>
-                        Behind the scenes, the tool utilizes secure cryptographic functions to build your password. When you click "Generate," it first compiles a master set of available characters based on your active selections (Uppercase, Lowercase, Numbers, and Symbols). Then, it iteratively selects characters at random from this pool until it reaches your specified password <strong>Length</strong>. The longer the password and the wider the variety of character types you include, the more mathematically secure it becomes.
+                        Behind the scenes, the tool utilizes secure cryptographic functions to build your password. When you click &quot;Generate,&quot; it first compiles a master set of available characters based on your active selections (Uppercase, Lowercase, Numbers, and Symbols). Then, it iteratively selects characters at random from this pool until it reaches your specified password <strong>Length</strong>. The longer the password and the wider the variety of character types you include, the more mathematically secure it becomes.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Customization and Strength Metrics</h3>
                     <p>

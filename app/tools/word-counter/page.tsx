@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { FileText, Copy, Trash2, Check } from 'lucide-react';
 import FAQSection from '@/components/FAQSection';
 
@@ -32,24 +32,7 @@ export default function WordCounter() {
     const [keywords, setKeywords] = useState<{ word: string, count: number }[]>([]);
     const [copied, setCopied] = useState(false);
 
-    useEffect(() => {
-        analyzeText(text);
-    }, [text]);
-
-    const analyzeText = (inputText: string) => {
-        const trimmed = inputText.trim();
-        const words = trimmed === '' ? 0 : trimmed.split(/\s+/).length;
-        const chars = inputText.length;
-        const charsNoSpaces = inputText.replace(/\s/g, '').length;
-        const sentences = trimmed === '' ? 0 : (inputText.match(/[.!?]+/g) || []).length;
-        const paragraphs = trimmed === '' ? 0 : inputText.split(/\n+/).filter(p => p.trim() !== '').length;
-        const readingTime = Math.ceil(words / 200);
-
-        setStats({ words, chars, sentences, paragraphs, charsNoSpaces, readingTime });
-        updateKeywords(inputText);
-    };
-
-    const updateKeywords = (inputText: string) => {
+    const updateKeywords = useCallback((inputText: string) => {
         if (!inputText.trim()) {
             setKeywords([]);
             return;
@@ -69,7 +52,24 @@ export default function WordCounter() {
             .map(([word, count]) => ({ word, count }));
 
         setKeywords(sorted);
-    };
+    }, []);
+
+    const analyzeText = useCallback((inputText: string) => {
+        const trimmed = inputText.trim();
+        const words = trimmed === '' ? 0 : trimmed.split(/\s+/).length;
+        const chars = inputText.length;
+        const charsNoSpaces = inputText.replace(/\s/g, '').length;
+        const sentences = trimmed === '' ? 0 : (inputText.match(/[.!?]+/g) || []).length;
+        const paragraphs = trimmed === '' ? 0 : inputText.split(/\n+/).filter(p => p.trim() !== '').length;
+        const readingTime = Math.ceil(words / 200);
+
+        setStats({ words, chars, sentences, paragraphs, charsNoSpaces, readingTime });
+        updateKeywords(inputText);
+    }, [updateKeywords]);
+
+    useEffect(() => {
+        setTimeout(() => analyzeText(text), 0);
+    }, [text, analyzeText]);
 
     const handleCopy = () => {
         if (!text) return;

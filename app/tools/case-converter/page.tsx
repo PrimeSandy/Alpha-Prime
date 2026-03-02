@@ -30,10 +30,12 @@ export default function CaseConverter() {
 
     // Stats update
     useEffect(() => {
-        setStats({
-            chars: text.length,
-            words: text.trim().split(/\s+/).filter(w => w.length > 0).length
-        });
+        setTimeout(() => {
+            setStats({
+                chars: text.length,
+                words: text.trim().split(/\s+/).filter(w => w.length > 0).length
+            });
+        }, 0);
     }, [text]);
 
     // Load history
@@ -41,7 +43,7 @@ export default function CaseConverter() {
         if (typeof window !== 'undefined') {
             const savedHistory = localStorage.getItem('caseHistory');
             if (savedHistory) {
-                setHistory(JSON.parse(savedHistory));
+                setTimeout(() => setHistory(JSON.parse(savedHistory as string)), 0);
             }
         }
     }, []);

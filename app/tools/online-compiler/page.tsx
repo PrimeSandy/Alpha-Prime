@@ -28,12 +28,36 @@ const faqs = [
 // Define types for global objects loaded via CDN
 declare global {
     interface Window {
-        require: any;
-        monaco: any;
-        loadPyodide: any;
-        ts: any;
-        JSCPP: any;
-        fengari: any;
+        require: {
+            config: (config: { paths: Record<string, string> }) => void;
+            (modules: string[], callback: () => void): void;
+        };
+        monaco: {
+            editor: {
+                create: (domElement: HTMLElement, options: Record<string, unknown>) => {
+                    getValue: () => string;
+                    setValue: (val: string) => void;
+                    onDidChangeModelContent: (listener: () => void) => void;
+                    getModel: () => { id: string } | null;
+                    dispose: () => void;
+                };
+                setModelLanguage: (model: { id: string }, languageId: string) => void;
+            };
+        };
+        loadPyodide: () => Promise<{
+            runPythonAsync: (code: string) => Promise<void>;
+            setStdout: (options: { batched: (msg: string) => void }) => void;
+            setStdin: (options: { stdin: () => string }) => void;
+        }>;
+        ts: {
+            transpile: (code: string) => string;
+        };
+        JSCPP: {
+            run: (code: string, input: string, config: Record<string, unknown>) => Promise<void>;
+        };
+        fengari: {
+            load: (code: string) => () => void;
+        };
         addToOutput?: (str: string) => void;
     }
 }
@@ -69,7 +93,11 @@ export default function OnlineCompiler() {
     const [stdInput, setStdInput] = useState('');
     const [showInput, setShowInput] = useState(false);
     const [status, setStatus] = useState<'ready' | 'running' | 'saved'>('ready');
-    const [pyodide, setPyodide] = useState<any>(null);
+    const [pyodide, setPyodide] = useState<{
+        runPythonAsync: (code: string) => Promise<void>;
+        setStdout: (options: { batched: (msg: string) => void }) => void;
+        setStdin: (options: { stdin: () => string }) => void;
+    } | null>(null);
     const [editorLoaded, setEditorLoaded] = useState(false);
 
     // External Scripts Loading State
@@ -82,7 +110,13 @@ export default function OnlineCompiler() {
     });
 
     const editorContainerRef = useRef<HTMLDivElement>(null);
-    const editorInstanceRef = useRef<any>(null);
+    const editorInstanceRef = useRef<{
+        getValue: () => string;
+        setValue: (val: string) => void;
+        onDidChangeModelContent: (listener: () => void) => void;
+        getModel: () => { id: string } | null;
+        dispose: () => void;
+    } | null>(null);
 
     // Load Monaco CDN
     useEffect(() => {
@@ -120,8 +154,10 @@ export default function OnlineCompiler() {
                 });
 
                 editorInstanceRef.current.onDidChangeModelContent(() => {
-                    const val = editorInstanceRef.current.getValue();
-                    setCode(val);
+                    if (editorInstanceRef.current) {
+                        const val = editorInstanceRef.current.getValue();
+                        setCode(val);
+                    }
                 });
 
                 setEditorLoaded(true);
@@ -249,8 +285,9 @@ export default function OnlineCompiler() {
                 default:
                     setOutput('Language not supported for execution yet.');
             }
-        } catch (error: any) {
-            setOutput(`Error: ${error.message}`);
+        } catch (error: unknown) {
+            const errorMessage = error instanceof Error ? error.message : String(error);
+            setOutput(`Error: ${errorMessage}`);
         } finally {
             setIsRunning(false);
         }
@@ -263,10 +300,11 @@ export default function OnlineCompiler() {
             logs.push(args.map(a => typeof a === 'object' ? JSON.stringify(a) : String(a)).join(' '));
         };
         try {
-            // eslint-disable-next-line no-new-func
+
             new Function(codeToRun)();
-        } catch (e: any) {
-            throw new Error(e.message);
+        } catch (e: unknown) {
+            const errorMessage = e instanceof Error ? e.message : String(e);
+            throw new Error(errorMessage);
         } finally {
             console.log = originalLog;
         }
@@ -281,8 +319,9 @@ export default function OnlineCompiler() {
             pyodide.setStdout({ batched: (msg: string) => setOutput(prev => prev + msg + "\n") });
             pyodide.setStdin({ stdin: () => stdInput });
             await pyodide.runPythonAsync(codeToRun);
-        } catch (e: any) {
-            throw new Error(e.message);
+        } catch (e: unknown) {
+            const errorMessage = e instanceof Error ? e.message : String(e);
+            throw new Error(errorMessage);
         }
     };
 
@@ -291,8 +330,9 @@ export default function OnlineCompiler() {
         try {
             const js = window.ts.transpile(codeToRun);
             await runJS(js);
-        } catch (e: any) {
-            throw new Error("Transpilation Failed: " + e.message);
+        } catch (e: unknown) {
+            const errorMessage = e instanceof Error ? e.message : String(e);
+            throw new Error("Transpilation Failed: " + errorMessage);
         }
     };
 
@@ -307,8 +347,9 @@ export default function OnlineCompiler() {
                 unsigned_overflow: 'report',
             };
             await window.JSCPP.run(codeToRun, stdInput, config);
-        } catch (e: any) {
-            throw new Error(`Runtime Error: ${e.message || e}`);
+        } catch (e: unknown) {
+            const errorMessage = e instanceof Error ? e.message : String(e);
+            throw new Error(`Runtime Error: ${errorMessage}`);
         }
     };
 
@@ -337,8 +378,9 @@ export default function OnlineCompiler() {
 
         try {
             window.fengari.load(luaWrapper)();
-        } catch (e: any) {
-            throw new Error(`Lua Error: ${e.message.replace('Lua Error: ', '')}`);
+        } catch (e: unknown) {
+            const errorMessage = e instanceof Error ? e.message : String(e);
+            throw new Error(`Lua Error: ${errorMessage.replace('Lua Error: ', '')}`);
         }
     };
 

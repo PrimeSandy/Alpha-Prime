@@ -55,7 +55,12 @@ const Header = () => {
         return () => document.removeEventListener('mousedown', handleClick);
     }, []);
 
-    useEffect(() => { setIsMobileMenuOpen(false); setToolsOpen(false); }, [pathname]);
+    useEffect(() => {
+        setTimeout(() => {
+            setIsMobileMenuOpen(false);
+            setToolsOpen(false);
+        }, 0);
+    }, [pathname]);
 
     const routeTitles: Record<string, string> = {
         '/': 'AlphaPrime',
@@ -146,9 +151,11 @@ const Header = () => {
                             </button>
                         ) : (
                             <div className="relative group flex items-center gap-2 cursor-pointer">
-                                <img
-                                    src={session.user?.image || ""}
-                                    alt={session.user?.name || ""}
+                                <Image
+                                    src={session.user?.image || "/placeholder-avatar.png"}
+                                    alt={session.user?.name || "User profile"}
+                                    width={32}
+                                    height={32}
                                     className="w-8 h-8 rounded-full"
                                 />
                                 <span className="hidden md:block text-sm font-medium text-black">

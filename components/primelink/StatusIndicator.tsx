@@ -2,7 +2,7 @@
 
 import React, { useEffect, useState } from 'react';
 import { createClient } from '@/lib/supabase';
-import { ShieldAlert, ShieldCheck, Users, Clock } from 'lucide-react';
+import { ShieldAlert, ShieldCheck, Clock } from 'lucide-react';
 
 interface StatusIndicatorProps {
     roomId: string;

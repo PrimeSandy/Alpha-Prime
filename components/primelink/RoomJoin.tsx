@@ -66,9 +66,10 @@ export default function RoomJoin({ token, name, onJoinRoom }: RoomJoinProps) {
                 onJoinRoom(data.id, data.room_code, data.visual_id);
             }
 
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Join Error:", err);
-            setError(err.message || "Failed to join room.");
+            const errorMessage = err instanceof Error ? err.message : "Failed to join room.";
+            setError(errorMessage);
         } finally {
             setIsJoining(false);
         }

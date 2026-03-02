@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { createClient } from '@/lib/supabase';
+import { RealtimeChannel } from '@supabase/supabase-js';
 import { Send, LogOut, Trash2, Copy, Check, MessageSquare, Pencil, X, Link2 } from 'lucide-react';
 import StatusIndicator from './StatusIndicator';
 
@@ -38,7 +39,7 @@ export default function ChatWindow({ roomId, roomCode, visualId, token, name, in
 
     const messagesEndRef = useRef<HTMLDivElement>(null);
     const [supabase] = useState(() => createClient(token));
-    const [chatChannel, setChatChannel] = useState<any>(null);
+    const [chatChannel, setChatChannel] = useState<RealtimeChannel | null>(null);
 
     const BANNER_KEY = 'primelink_room_banner_dismissed';
     const [showBanner, setShowBanner] = useState(false);
@@ -114,7 +115,7 @@ export default function ChatWindow({ roomId, roomCode, visualId, token, name, in
         const channel = supabase.channel(`chat_${roomId}`);
 
         channel
-            .on('broadcast', { event: 'new_message' }, ({ payload }: any) => {
+            .on('broadcast', { event: 'new_message' }, ({ payload }: { payload: Message }) => {
                 if (isMounted) {
                     setMessages(prev => {
                         if (prev.find(m => m.id === payload.id)) return prev;
@@ -122,7 +123,7 @@ export default function ChatWindow({ roomId, roomCode, visualId, token, name, in
                     });
                 }
             })
-            .on('broadcast', { event: 'name_change' }, ({ payload }: any) => {
+            .on('broadcast', { event: 'name_change' }, ({ payload }: { payload: { content: string, from_token: string } }) => {
                 // Both sender and receiver get this via broadcast.
                 // We use `from_token` to avoid double-inserting on sender's side.
                 if (isMounted && payload.from_token !== token) {
@@ -144,7 +145,7 @@ export default function ChatWindow({ roomId, roomCode, visualId, token, name, in
             channel.untrack();
             supabase.removeChannel(channel);
         };
-    }, [roomId, token]);
+    }, [roomId, token, supabase, onLeave]);
 
     const handleSendMessage = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -242,10 +243,10 @@ export default function ChatWindow({ roomId, roomCode, visualId, token, name, in
             const storedRecents = localStorage.getItem('primelink_recent_rooms');
             if (storedRecents) {
                 try {
-                    const filtered = JSON.parse(storedRecents).filter((r: any) => r.id !== roomId);
+                    const filtered = JSON.parse(storedRecents).filter((r: { id: string }) => r.id !== roomId);
                     localStorage.setItem('primelink_recent_rooms', JSON.stringify(filtered));
                     window.dispatchEvent(new Event('storage'));
-                } catch (e) { /* ignore */ }
+                } catch { /* ignore */ }
             }
 
             onLeave();

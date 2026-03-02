@@ -39,7 +39,7 @@ export default function Privacy() {
                         </p>
                         <ul className="list-disc pl-6 space-y-2 text-gray-800 mb-4">
                             <li><strong>Local Processing:</strong> Most tools (Word Counter, Password Generator, Image Resizer, Base64, Case Converter, Compiler, Color Tools, Diff Checker) run entirely in your browser. No input data is sent to our servers.</li>
-                            
+
                             <li><strong>PrimeLink Chat:</strong> PrimeLink utilizes Supabase for real-time WebSocket connections. We enforce a strict <strong>no message logging</strong> policy; messages are transient and not permanently stored in any database.</li>
                             <li><strong>Platform & Hosting:</strong> Our platform is hosted on Vercel globally, and your data may be processed on secure servers located outside your country of residence.</li>
                         </ul>
@@ -73,7 +73,7 @@ export default function Privacy() {
                         <ul className="list-disc pl-6 space-y-2 text-gray-800 mb-4">
                             <li><strong>Right to Access & Portability:</strong> Request a copy of the data we hold about you in a standard format.</li>
                             <li><strong>Right to Deletion:</strong> Request the permanent deletion of your account and associated data.</li>
-                            <li><strong>Right to Opt-Out ("Do Not Sell"):</strong> We do not sell your personal data. However, you may opt out of targeted Google AdSense cookies via your browser or Google Ad Settings.</li>
+                            <li><strong>Right to Opt-Out (&quot;Do Not Sell&quot;):</strong> We do not sell your personal data. However, you may opt out of targeted Google AdSense cookies via your browser or Google Ad Settings.</li>
                         </ul>
                     </div>
 
@@ -84,7 +84,7 @@ export default function Privacy() {
                             <h2 className="text-2xl font-bold text-black m-0">4. Data Retention</h2>
                         </div>
                         <ul className="list-disc pl-6 space-y-2 text-gray-800 mb-4">
-                            
+
                             <li><strong>PrimeLink Chat:</strong> Ephemeral. Messages exist only in memory during the real-time session via Supabase and are not written to persistent storage logs.</li>
                         </ul>
                     </div>
