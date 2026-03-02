@@ -1,5 +1,5 @@
 import { initializeApp, getApps, getApp } from "firebase/app";
-import { getAuth, GoogleAuthProvider } from "firebase/auth";
+import { Auth, getAuth, GoogleAuthProvider } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
@@ -12,8 +12,8 @@ const firebaseConfig = {
 
 // Initialize Firebase only if config is available to prevent build-time crashes
 let app;
-let auth: any;
-let googleProvider: any;
+let auth: Auth | any;
+let googleProvider: GoogleAuthProvider | any;
 
 if (firebaseConfig.apiKey) {
     app = !getApps().length ? initializeApp(firebaseConfig) : getApp();

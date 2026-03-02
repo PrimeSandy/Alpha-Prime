@@ -596,18 +596,18 @@ export default function ColorTools() {
                 <h2 className="text-3xl font-bold text-black mb-6">How Your Color Tools Work</h2>
                 <div className="prose prose-gray max-w-none text-gray-800 space-y-4">
                     <p>
-                        Our comprehensive Color Tools suite provides everything a designer or developer needs to manage, convert, and analyze colors efficiently. Rather than using multiple separate applications, we’ve bundled a Converter, Picker, Gradient Generator, Contrast Checker, and Palette Generator into one seamless interface. Best of all, all calculations are performed locally in your browser, ensuring instantaneous results.
+                        Our comprehensive Color Tools suite provides everything a designer or developer needs to manage, convert, and analyze colors efficiently. Rather than using multiple separate applications, we&apos;ve bundled a Converter, Picker, Gradient Generator, Contrast Checker, and Palette Generator into one seamless interface. Best of all, all calculations are performed locally in your browser, ensuring instantaneous results.
                     </p>
                     <p>
-                        Let’s explore how each of these powerful features works to enhance your design workflow:
+                        Let&apos;s explore how each of these powerful features works to enhance your design workflow:
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Color Converter</h3>
                     <p>
-                        The Color Converter allows you to seamlessly translate colors between HEX, RGB, and HSL formats. When you enter a color in one format, our algorithm instantly calculates its equivalent in the other formats. This is achieved through complex mathematical conversions. For instance, converting RGB to HSL involves finding the maximum and minimum values among the red, green, and blue channels to determine the color's lightness and saturation, while the hue is calculated based on which channel is dominant.
+                        The Color Converter allows you to seamlessly translate colors between HEX, RGB, and HSL formats. When you enter a color in one format, our algorithm instantly calculates its equivalent in the other formats. This is achieved through complex mathematical conversions. For instance, converting RGB to HSL involves finding the maximum and minimum values among the red, green, and blue channels to determine the color&apos;s lightness and saturation, while the hue is calculated based on which channel is dominant.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Interactive Picker</h3>
                     <p>
-                        Our visual Color Picker uses an HTML5 Canvas to render a full color wheel. When you click anywhere on the canvas, the tool calculates the exact position of your cursor relative to the center of the wheel. The angle determines the hue (from 0 to 360 degrees), while the distance from the center dictates the saturation. This interactive approach provides a highly intuitive way to discover and fine-tune exactly the shade you’re looking for.
+                        Our visual Color Picker uses an HTML5 Canvas to render a full color wheel. When you click anywhere on the canvas, the tool calculates the exact position of your cursor relative to the center of the wheel. The angle determines the hue (from 0 to 360 degrees), while the distance from the center dictates the saturation. This interactive approach provides a highly intuitive way to discover and fine-tune exactly the shade you&apos;re looking for.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Gradient & Contrast Checkers</h3>
                     <p>

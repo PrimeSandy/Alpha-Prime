@@ -36,9 +36,21 @@ const faqs = [
         answer: "You can effortlessly resize and compress popular formats including JPG, PNG, and WEBP (max 10MB)."
     }
 ];
+interface ImageItem {
+    id: number;
+    file: File;
+    preview: string;
+    name: string;
+    size: number;
+    status: 'pending' | 'processing' | 'done' | 'error';
+    resultBlob: Blob | null;
+    resultUrl: string | null;
+    resultSize: number;
+    error?: string;
+}
 
 export default function ImageResizer() {
-    const [images, setImages] = useState<any[]>([]);
+    const [images, setImages] = useState<ImageItem[]>([]);
     const [mode, setMode] = useState<'compress' | 'resize'>('compress');
     const [quality, setQuality] = useState(80);
     const [outputFormat, setOutputFormat] = useState('original');
@@ -81,13 +93,13 @@ export default function ImageResizer() {
     };
 
     const addImages = (files: File[]) => {
-        const newImages = files.map(file => ({
+        const newImages: ImageItem[] = files.map(file => ({
             id: Date.now() + Math.random(),
             file,
             preview: URL.createObjectURL(file), // Create object URL
             name: file.name,
             size: file.size,
-            status: 'pending', // pending, processing, done, error
+            status: 'pending' as const,
             resultBlob: null,
             resultUrl: null,
             resultSize: 0
@@ -139,7 +151,7 @@ export default function ImageResizer() {
         return originalType;
     };
 
-    const processImage = async (img: { preview: string, file: { type: string, name: string } }): Promise<{ blob: Blob, url: string, size: number }> => {
+    const processImage = async (img: ImageItem): Promise<{ blob: Blob, url: string, size: number }> => {
         return new Promise((resolve, reject) => {
             const imgElement = new Image();
             imgElement.src = img.preview;
@@ -264,16 +276,16 @@ export default function ImageResizer() {
         }
     };
 
-    const downloadImage = (img: { resultUrl: string, file: { name: string } }) => {
+    const downloadImage = (img: ImageItem) => {
         if (!img.resultUrl) return;
         const link = document.createElement('a');
         link.href = img.resultUrl;
 
         const ext = outputFormat === 'original'
-            ? img.file.name.split('.').pop()
+            ? img.name.split('.').pop()
             : outputFormat;
 
-        const namePart = img.file.name.substring(0, img.file.name.lastIndexOf('.')) || img.file.name;
+        const namePart = img.name.substring(0, img.name.lastIndexOf('.')) || img.name;
         link.download = `${namePart}_${mode === 'compress' ? 'compressed' : 'resized'}.${ext}`;
         document.body.appendChild(link);
         link.click();

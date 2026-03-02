@@ -284,23 +284,23 @@ export default function CaseConverter() {
                         Our Text Case Converter is an essential tool for writers, editors, programmers, and anyone who regularly works with text. It offers a quick and reliable way to change the capitalization of large blocks of text without having to retype them manually. Whether you accidentally left your Caps Lock on or need to format a title correctly, our tool provides an instant solution.
                     </p>
                     <p>
-                        The tool processes your input text and applies specific algorithmic rules to modify the capitalization according to the style you select. Under the hood, it uses JavaScript string manipulation methods to ensure accurate and lightening-fast conversions, directly within your web browser. This means your text is never sent to a server, ensuring your data remains completely private and secure.
+                        The tool processes your input text and applies specific algorithmic rules to modify the capitalization according to the style you select. Under the hood, it uses JavaScript string manipulation methods to ensure accurate and lightening-fast conversions, directly within your web browser. This means your text is never sent to a server, ensuring your data remains completely private and secure. It&apos;s a convenient and safe way to handle your text.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Available Transformation Styles</h3>
                     <p>
-                        <strong>UPPERCASE:</strong> This option converts every single letter in your text to its capitalized form. It is commonly used for emphasis, creating bold headlines, or matching specific data formatting requirements. For example, "hello world" becomes "HELLO WORLD".
+                        <strong>UPPERCASE:</strong> This option converts every single letter in your text to its capitalized form. It is commonly used for emphasis, creating bold headlines, or matching specific data formatting requirements. For example, &quot;hello world&quot; becomes &quot;HELLO WORLD&quot;.
                     </p>
                     <p>
-                        <strong>lowercase:</strong> Conversely, the lowercase option changes all letters to their small, non-capitalized forms. This is particularly useful when normalizing data, preparing URLs, or fixing text that was mistakenly typed with Caps Lock on. "HELLO WORLD" transforms into "hello world".
+                        <strong>lowercase:</strong> Conversely, the lowercase option changes all letters to their small, non-capitalized forms. This is particularly useful when normalizing data, preparing URLs, or fixing text that was mistakenly typed with Caps Lock on. &quot;HELLO WORLD&quot; transforms into &quot;hello world&quot;.
                     </p>
                     <p>
-                        <strong>Title Case:</strong> Title case capitalizes the first letter of every word while leaving the rest of the letters lowercase. This is the standard formatting style for book titles, article headlines, and proper nouns. "the quick brown fox" becomes "The Quick Brown Fox".
+                        <strong>Title Case:</strong> Title case capitalizes the first letter of every word while leaving the rest of the letters lowercase. This is the standard formatting style for book titles, article headlines, and proper nouns. &quot;the quick brown fox&quot; becomes &quot;The Quick Brown Fox&quot;.
                     </p>
                     <p>
                         <strong>Sentence case:</strong> This format mimics natural writing by capitalizing only the very first letter of a sentence and leaving the subsequent words in lowercase, unless they are recognized proper nouns. It is ideal for converting unformatted blocks of text into readable paragraphs.
                     </p>
                     <p>
-                        <strong>aLtErNaTiNg cAsE and InVeRsE cAsE:</strong> These are more specialized formats. Alternating case toggles capitalization between each letter (e.g., "hElLo"), often used for stylistic or informal internet communication. Inverse case analyzes your text and flips the current capitalization—what was uppercase becomes lowercase, and vice versa.
+                        <strong>aLtErNaTiNg cAsE and InVeRsE cAsE:</strong> These are more specialized formats. Alternating case toggles capitalization between each letter (e.g., &quot;hElLo&quot;), often used for stylistic or informal internet communication. Inverse case analyzes your text and flips the current capitalization—what was uppercase becomes lowercase, and vice versa.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Why Use a Case Converter?</h3>
                     <p>

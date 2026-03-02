@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { Lock, User, Clock, ChevronRight, X } from 'lucide-react';
 import RoomCreator from '@/components/primelink/RoomCreator';
@@ -97,13 +97,34 @@ export default function PrimeLinkPage() {
         }
     }, []);
 
+    const handleJoinRoom = useCallback(async (roomId: string, roomCode: string, visualId: string, inviteLink?: string) => {
+        // NOTE: This is called after RPC verification from RoomCreator/RoomJoin.
+        setActiveRoom({ id: roomId, code: roomCode, visual: visualId });
+        if (inviteLink) setActiveInviteLink(inviteLink);
+        localStorage.setItem('primelink_current_room_id', roomId);
+        localStorage.setItem('primelink_current_room_code', roomCode);
+        localStorage.setItem('primelink_current_visual_id', visualId);
+
+        setRecentRooms(prev => {
+            const filtered = prev.filter(r => r.id !== roomId);
+            const newList = [
+                { id: roomId, code: roomCode, visual: visualId, lastJoined: new Date() },
+                ...filtered
+            ].slice(0, 5);
+            localStorage.setItem('primelink_recent_rooms', JSON.stringify(newList));
+            window.dispatchEvent(new Event('storage'));
+            return newList;
+        });
+    }, []);
+
     // When identity becomes available AND there is a pending invite, auto-join
     useEffect(() => {
         if (!identity || !pendingInviteCode || isJoiningViaInvite || activeRoom) return;
 
         const autoJoin = async () => {
             setIsJoiningViaInvite(true);
-            const supabase = (await import('@/lib/supabase')).createClient(identity.token);
+            const supabaseModule = (await import('@/lib/supabase'));
+            const supabase = supabaseModule.createClient(identity.token);
             try {
                 const { data, error: rpcError } = await supabase.rpc('join_room', {
                     p_room_code: pendingInviteCode,
@@ -127,8 +148,9 @@ export default function PrimeLinkPage() {
                     setPendingInviteCode(null);
                     handleJoinRoom(data.id, data.room_code, data.visual_id);
                 }
-            } catch (err: any) {
-                alert('Invite join failed: ' + err.message);
+            } catch (err) {
+                const errorMessage = err instanceof Error ? err.message : 'Unknown error';
+                alert('Invite join failed: ' + errorMessage);
                 setPendingInviteCode(null);
             } finally {
                 setIsJoiningViaInvite(false);
@@ -136,8 +158,7 @@ export default function PrimeLinkPage() {
         };
 
         autoJoin();
-    }, [identity, pendingInviteCode]);
-
+    }, [identity, pendingInviteCode, isJoiningViaInvite, activeRoom, handleJoinRoom]);
     const handleSetName = (e: React.FormEvent) => {
         e.preventDefault();
         const trimmed = tempName.trim();
@@ -149,27 +170,6 @@ export default function PrimeLinkPage() {
             setIdentity({ token, name: trimmed });
         }
     };
-
-    const handleJoinRoom = async (roomId: string, roomCode: string, visualId: string, inviteLink?: string) => {
-        // NOTE: This is called after RPC verification from RoomCreator/RoomJoin.
-        setActiveRoom({ id: roomId, code: roomCode, visual: visualId });
-        if (inviteLink) setActiveInviteLink(inviteLink);
-        localStorage.setItem('primelink_current_room_id', roomId);
-        localStorage.setItem('primelink_current_room_code', roomCode);
-        localStorage.setItem('primelink_current_visual_id', visualId);
-
-        setRecentRooms(prev => {
-            const filtered = prev.filter(r => r.id !== roomId);
-            const newList = [
-                { id: roomId, code: roomCode, visual: visualId, lastJoined: new Date() },
-                ...filtered
-            ].slice(0, 5);
-            localStorage.setItem('primelink_recent_rooms', JSON.stringify(newList));
-            window.dispatchEvent(new Event('storage'));
-            return newList;
-        });
-    };
-
     const handleRejoinFromHistory = async (room: RecentRoom) => {
         // Re-joining from recent history MUST go through the RPC to verify the room
         // still exists and slot is available (prevents 3rd person re-entry after delete)
@@ -201,9 +201,10 @@ export default function PrimeLinkPage() {
             if (data && data.id) {
                 handleJoinRoom(data.id, data.room_code, data.visual_id);
             }
-        } catch (err: any) {
+        } catch (err: unknown) {
             console.error("Rejoin error:", err);
-            alert(err.message || "Could not rejoin room. It may have been destroyed.");
+            const errorMessage = err instanceof Error ? err.message : "Could not rejoin room. It may have been destroyed.";
+            alert(errorMessage);
             handleRemoveRecent(room.id);
         }
     };

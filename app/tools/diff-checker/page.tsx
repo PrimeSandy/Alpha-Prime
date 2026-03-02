@@ -148,7 +148,7 @@ export default function DiffChecker() {
                         A Diff Checker (short for Difference Checker) is an invaluable tool for developers, writers, and anyone who needs to track changes between two versions of a document or codebase. At a glance, it highlights exactly what has been added, removed, or modified, saving you the tedious task of manually reading through lines of text side-by-side.
                     </p>
                     <p>
-                        Our Diff Checker leverages the powerful <code>diff</code> algorithmic library to compute the differences between your "Original" and "Changed" text inputs. This comparison is performed entirely in your browser, meaning your sensitive code or proprietary text is never transmitted to an external server. It is fast, private, and highly accurate.
+                        Our Diff Checker leverages the powerful <code>diff</code> algorithmic library to compute the differences between your &quot;Original&quot; and &quot;Changed&quot; text inputs. This comparison is performed entirely in your browser, meaning your sensitive code or proprietary text is never transmitted to an external server. It is fast, private, and highly accurate.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Comparison Modes</h3>
                     <p>

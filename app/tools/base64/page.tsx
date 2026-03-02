@@ -284,7 +284,7 @@ export default function Base64Converter() {
                 <h2 className="text-3xl font-bold text-black mb-6">How Base64 Encoding Works</h2>
                 <div className="prose prose-gray max-w-none text-gray-800 space-y-4">
                     <p>
-                        Base64 encoding is an ingenious method used to represent binary data in an ASCII string format. The term "Base64" originates from a specific MIME content transfer encoding. It is highly prevalent on the World Wide Web and is the standard for transferring data such as images or files within scripts, HTML, or email protocols.
+                        Base64 encoding is an ingenious method used to represent binary data in an ASCII string format. The term &quot;Base64&quot; originates from a specific MIME content transfer encoding. It is highly prevalent on the World Wide Web and is the standard for transferring data such as images or files within scripts, HTML, or email protocols.
                     </p>
                     <p>
                         At its core, Base64 takes binary data (which consists of 8-bit bytes) and translates it into a 6-bit representation. Since 2 to the power of 6 equals 64, this 6-bit data can be represented by 64 distinct characters. The standard Base64 alphabet includes uppercase letters (A-Z), lowercase letters (a-z), numbers (0-9), and two additional characters: the plus sign (+) and the forward slash (/). The equals sign (=) is also used for padding at the end of the encoded string.
@@ -301,7 +301,7 @@ export default function Base64Converter() {
                         You might wonder why we need to encode data in the first place. The primary reason is that many communication protocols, such as SMTP (for email), were originally designed to handle only text data. When you try to send binary data (like an image or a PDF attachment) over these protocols, some bytes might be interpreted as control characters, leading to data corruption.
                     </p>
                     <p>
-                        By encoding the binary data into Base64, you guarantee that the data consists entirely of safe, printable ASCII characters. This ensures that the data reaches its destination intact, without any unintended modifications during transit. It's a fundamental bridge between the binary world of computers and the text-based nature of legacy communication protocols.
+                        By encoding the binary data into Base64, you guarantee that the data consists entirely of safe, printable ASCII characters. This ensures that the data reaches its destination intact, without any unintended modifications during transit. It&apos;s a fundamental bridge between the binary world of computers and the text-based nature of legacy communication protocols.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Decoding Back to Original Data</h3>
                     <p>

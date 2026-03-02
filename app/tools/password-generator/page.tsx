@@ -298,11 +298,11 @@ export default function PasswordGenerator() {
                         Security is not one-size-fits-all. Some legacy systems might not allow special characters, while modern financial institutions might mandate extremely long passwords. Our interface provides interactive toggles and a length slider so you can customize the output to meet any specific strict criteria.
                     </p>
                     <p>
-                        As you adjust these settings, the integrated <strong>Strength Meter</strong> dynamically recalculates the robustness of the generated string. This meter uses a scoring system that awards points based on the total length and the diversity of the character sets used. A score above 80 classifies as "Strong," providing you with visual reassurance that your new credential is fit for securing sensitive data.
+                        As you adjust these settings, the integrated <strong>Strength Meter</strong> dynamically recalculates the robustness of the generated string. This meter uses a scoring system that awards points based on the total length and the diversity of the character sets used. A score above 80 classifies as &quot;Strong,&quot; providing you with visual reassurance that your new credential is fit for securing sensitive data.
                     </p>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">Privacy and History</h3>
                     <p>
-                        We understand the convenience of keeping track of recently generated passwords during a session. Our tool temporarily maintains a history of your generated secure strings using your browser's local HTML5 Storage. This means if you generate a great password, copy it, and then accidentally generate another one, your previous password isn't lost instantly. However, for maximum security, we provide a quick <strong>Clear</strong> button to wipe this local history clean once you have safely stored your new password in a dedicated password manager.
+                        We understand the convenience of keeping track of recently generated passwords during a session. Our tool temporarily maintains a history of your generated secure strings using your browser&apos;s local HTML5 Storage. This means if you generate a great password, copy it, and then accidentally generate another one, your previous password isn&apos;t lost instantly. However, for maximum security, we provide a quick <strong>Clear</strong> button to wipe this local history clean once you have safely stored your new password in a dedicated password manager.
                     </p>
                 </div>
 

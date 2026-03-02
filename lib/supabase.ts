@@ -1,14 +1,14 @@
 import { createClient as createSupabaseClient } from '@supabase/supabase-js';
 
 export const createClient = (token?: string) => {
-    const options: any = {
+    const options = {
         auth: {
             persistSession: false,
             autoRefreshToken: false,
             detectSessionInUrl: false
         },
         global: {
-            headers: {}
+            headers: {} as Record<string, string>
         }
     };
 

@@ -468,7 +468,7 @@ export default function OnlineCompiler() {
                             Writing and testing code usually requires setting up complex local development environments, installing compilers, and configuring paths. Our Online Compiler bypasses all that friction, offering a complete, multi-language Integrated Development Environment (IDE) directly within your web browser. It is fast, secure, and entirely client-side.
                         </p>
                         <p>
-                            The core of our text editor is powered by <strong>Monaco Editor</strong>, the very same technology that underpins Microsoft's popular VS Code. This provides you with professional-grade features such as syntax highlighting, code folding, bracket matching, and intelligent autocompletion right out of the box. As you type, your code is automatically cached in your browser's local storage, ensuring you never lose your work even if you accidentally close the tab.
+                            The core of our text editor is powered by <strong>Monaco Editor</strong>, the very same technology that underpins Microsoft&apos;s popular VS Code. This provides you with professional-grade features such as syntax highlighting, code folding, bracket matching, and intelligent autocompletion right out of the box. As you type, your code is automatically cached in your browser&apos;s local storage, ensuring you never lose your work even if you accidentally close the tab.
                         </p>
                         <h3 className="text-xl font-semibold text-black mt-6 mb-3">Client-Side Execution</h3>
                         <p>

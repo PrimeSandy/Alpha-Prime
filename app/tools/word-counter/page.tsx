@@ -192,7 +192,7 @@ export default function WordCounter() {
                 <h2 className="text-3xl font-bold text-black mb-6 relative z-10">How Our Word Counter Works</h2>
                 <div className="prose prose-gray max-w-none text-gray-800 space-y-4 relative z-10">
                     <p>
-                        Whether you're an author writing a novel, an SEO specialist optimizing web copy, or a student finishing an essay with strict length requirements, knowing the exact metrics of your text is essential. Our Advanced Word Counter goes beyond simple tallying to provide comprehensive, real-time insights into your content’s structure and readability.
+                        Whether you&apos;re an author writing a novel, an SEO specialist optimizing web copy, or a student finishing an essay with strict length requirements, knowing the exact metrics of your text is essential. Our Advanced Word Counter goes beyond simple tallying to provide comprehensive, real-time insights into your content&apos;s structure and readability.
                     </p>
                     <p>
                         The tool is built entirely in your browser using modern web technologies. This means that zero data is sent to external servers. Your essays, articles, and private documents remain strictly confidential on your local machine, and the analysis happens instantaneously as you type or paste text into the editor.
@@ -203,13 +203,13 @@ export default function WordCounter() {
                     </p>
                     <ul className="list-disc pl-5 space-y-2">
                         <li><strong>Words:</strong> Calculates the true word count by identifying contiguous sequences of alphanumeric characters separated by whitespace.</li>
-                        <li><strong>Characters:</strong> Tracks total keystrokes, offering a secondary metric ("Chars no spaces") which is vital for character-limited platforms like Twitter or SMS.</li>
+                        <li><strong>Characters:</strong> Tracks total keystrokes, offering a secondary metric (&quot;Chars no spaces&quot;) which is vital for character-limited platforms like Twitter or SMS.</li>
                         <li><strong>Sentences & Paragraphs:</strong> Accurately parses punctuation (periods, exclamation marks, question marks) and line breaks to measure the structural rhythm of your document.</li>
                         <li><strong>Reading Time:</strong> Estimates how long it takes an average adult (reading at roughly 200 words per minute) to read your text, perfect for timing speeches or blog post lengths.</li>
                     </ul>
                     <h3 className="text-xl font-semibold text-black mt-6 mb-3">SEO and Keyword Density</h3>
                     <p>
-                        Writing for the web requires strategic word placement. Our "Top Keywords" feature automatically filters out common stop words and short filler text. By analyzing the frequency of the remaining substantive words, it dynamically generates a list of your most used terms. This allows you to quickly verify if you are hitting your target SEO keywords or, conversely, if you are overusing a specific cliché and need to diversify your vocabulary.
+                        Writing for the web requires strategic word placement. Our &quot;Top Keywords&quot; feature automatically filters out common stop words and short filler text. By analyzing the frequency of the remaining substantive words, it dynamically generates a list of your most used terms. This allows you to quickly verify if you are hitting your target SEO keywords or, conversely, if you are overusing a specific cliché and need to diversify your vocabulary.
                     </p>
                 </div>
 
