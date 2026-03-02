@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" fill="none">
+  <!-- Modern Geometric AP Monogram -->
+  <path d="M256 48L64 416H144L256 192L368 416H448L256 48Z" fill="black"/>
+  <path d="M240 180V464H272V180H240Z" fill="black"/>
+  <path d="M272 240H400V352H272V320H368V272H272V240Z" fill="black"/>
+</svg>
