@@ -6,6 +6,16 @@ import { blogPosts } from '@/lib/blog-data';
 export const metadata: Metadata = {
     title: 'AlphaPrime Blog - Web Tools & Tech Tutorials',
     description: 'Explore our latest articles, guides, and tutorials on web development, security, and using our free online tools.',
+    alternates: {
+        canonical: 'https://alphaprime.co.in/blog/',
+    },
+    openGraph: {
+        title: 'AlphaPrime Blog - Web Tools & Tech Tutorials',
+        description: 'Explore our latest articles, guides, and tutorials on web development, security, and using our free online tools.',
+        url: 'https://alphaprime.co.in/blog/',
+        siteName: 'AlphaPrime',
+        type: 'website',
+    },
 };
 
 export default function BlogIndex() {

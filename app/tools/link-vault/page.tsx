@@ -375,8 +375,8 @@ export default function LinkVault() {
                                                             </div>
                                                             {rec.shortId && (
                                                                 <div className="flex items-center gap-2 bg-white border border-gray-200 rounded-lg px-3 py-2 w-full shadow-sm">
-                                                                    <span className="flex-1 text-xs font-mono text-gray-700 truncate">https://www.alphaprime.co.in/v/{rec.shortId}</span>
-                                                                    <button type="button" onClick={() => copyToClipboard(`https://www.alphaprime.co.in/v/${rec.shortId}`, rec._id)}
+                                                                    <span className="flex-1 text-xs font-mono text-gray-700 truncate">https://alphaprime.co.in/v/{rec.shortId}</span>
+                                                                    <button type="button" onClick={() => copyToClipboard(`https://alphaprime.co.in/v/${rec.shortId}`, rec._id)}
                                                                         className="flex-shrink-0 inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-md border transition-colors bg-black border-black text-white hover:bg-gray-800">
                                                                         {copiedId === rec._id ? <><CheckCheck className="w-3.5 h-3.5 text-green-400" />Copied!</> : <><Copy className="w-3.5 h-3.5" />Copy Shareable Link</>}
                                                                     </button>

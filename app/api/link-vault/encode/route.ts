@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid';
 import { LinkVault } from '@/lib/models/linkVault';
 import { normalizeUrl } from '@/lib/utils/normalizeUrl';
 
-const BASE_URL = 'https://www.alphaprime.co.in';
+const BASE_URL = 'https://alphaprime.co.in';
 
 const encodeSchema = z.object({
     url: z.string().url().startsWith('https', { message: 'Must be an HTTPS URL' }),

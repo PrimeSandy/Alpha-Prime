@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import mongoose from 'mongoose';
 import { LinkVault } from '@/lib/models/linkVault';
 
-const BASE_URL = 'https://www.alphaprime.co.in';
+const BASE_URL = 'https://alphaprime.co.in';
 
 async function connectDB() {
     if (mongoose.connection.readyState >= 1) return;

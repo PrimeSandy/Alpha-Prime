@@ -343,8 +343,18 @@ export default function OnlineCompiler() {
     };
 
     return (
-        <div className="flex flex-col min-h-[calc(100vh-64px)] bg-white">
-            <div className="flex flex-col h-[calc(100vh-64px)] shrink-0 border-b border-gray-200">
+        <div className="flex flex-col min-h-screen bg-white">
+            {/* Hero Section */}
+            <div className="container mx-auto px-4 py-12 max-w-6xl text-center">
+                <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight text-black">
+                    Multi-Language <span className="text-black">Online Compiler</span>
+                </h1>
+                <p className="text-gray-800 max-w-2xl mx-auto text-lg">
+                    Write, test, and execute code in Python, JavaScript, C++, and more directly in your browser. 100% Secure, Private, and Client-side.
+                </p>
+            </div>
+
+            <div className="flex flex-col h-[750px] shrink-0 border-y border-gray-200 bg-white shadow-sm overflow-hidden relative z-0">
                 {/* Compiler Header */}
                 <div className="h-16 border-b border-gray-200 bg-white flex items-center justify-between px-4 sm:px-6 shrink-0 z-10">
                     <div className="flex items-center gap-4 overflow-x-auto hide-scrollbar">

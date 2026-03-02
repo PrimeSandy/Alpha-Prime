@@ -299,7 +299,7 @@ export default function ImageResizer() {
             )}
             <div className="text-center mb-10">
                 <h1 className="text-4xl sm:text-5xl font-extrabold mb-4 tracking-tight text-black">
-                    Smart Image <span className="text-black">Compression</span>
+                    Smart Image <span className="text-black">Resizer & Compression</span>
                 </h1>
                 <p className="text-slate-600 max-w-2xl mx-auto text-lg">
                     Reduce file size by up to 80% while maintaining perfect quality. Fast, secure, and processing happens entirely on your device.

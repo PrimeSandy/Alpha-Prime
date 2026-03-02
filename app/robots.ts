@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
             allow: '/',
             disallow: '/api/',
         },
-        sitemap: 'https://www.alphaprime.co.in/sitemap.xml',
+        sitemap: 'https://alphaprime.co.in/sitemap.xml',
     }
 }

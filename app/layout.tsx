@@ -37,7 +37,9 @@ export const metadata: Metadata = {
   description: 'Free privacy-first web tools. Fast, simple, and runs entirely in your browser. No tracking, no data collection.',
   keywords: ['free web tools', 'privacy tools', 'online compiler', 'password generator', 'image resizer', 'AlphaPrime'],
   authors: [{ name: 'AlphaPrime', url: 'https://alphaprime.co.in' }],
-  alternates: { canonical: 'https://alphaprime.co.in' },
+  alternates: {
+    canonical: 'https://alphaprime.co.in/',
+  },
   openGraph: {
     type: 'website',
     siteName: 'AlphaPrime',
@@ -83,15 +85,7 @@ export default function RootLayout({
         {/* SVG favicon — tiny, loads in <5ms */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-        {/* Google AdSense — primary script */}
-        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
-        <script
-          async
-          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6584682991448565"
-          crossOrigin="anonymous"
-        />
-        <meta name="google-adsense-account" content="ca-pub-6584682991448565" />
-
+        {/* Google AdSense — primary script moved to Script component for optimization */}
       </head>
       <body className={`${manrope.variable} ${spaceGrotesk.variable} min-h-screen bg-white text-black antialiased flex flex-col`}>
         <AuthProvider>
@@ -100,6 +94,13 @@ export default function RootLayout({
             {children}
           </main>
           <Footer />
+
+          {/* Google AdSense script — optimized with afterInteractive strategy */}
+          <Script
+            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6584682991448565"
+            strategy="afterInteractive"
+            crossOrigin="anonymous"
+          />
 
           {/* SW Kill — deferred to idle time to avoid long tasks */}
           <Script id="sw-kill" strategy="afterInteractive">

@@ -28,7 +28,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             title: post.title,
             description: post.metaDescription,
             type: 'article',
-            url: `https://www.alphaprime.co.in/blog/${post.slug}/`,
+            url: `https://alphaprime.co.in/blog/${post.slug}/`,
             siteName: 'AlphaPrime',
         },
         twitter: {
@@ -37,7 +37,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
             description: post.metaDescription,
         },
         alternates: {
-            canonical: `https://www.alphaprime.co.in/blog/${post.slug}/`,
+            canonical: `https://alphaprime.co.in/blog/${post.slug}/`,
         },
     };
 }

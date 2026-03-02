@@ -2,7 +2,7 @@ import { MetadataRoute } from 'next'
 import { blogPosts } from '@/lib/blog-data'
 
 export default function sitemap(): MetadataRoute.Sitemap {
-    const baseUrl = 'https://www.alphaprime.co.in'
+    const baseUrl = 'https://alphaprime.co.in'
     const now = new Date()
 
     return [
