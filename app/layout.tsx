@@ -83,7 +83,7 @@ export default function RootLayout({
         {/* SVG favicon — tiny, loads in <5ms */}
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
 
-        {/* Google AdSense – must be in <head> for approval */}
+        {/* Google AdSense — primary script */}
         {/* eslint-disable-next-line @next/next/no-sync-scripts */}
         <script
           async
@@ -118,14 +118,6 @@ export default function RootLayout({
             }
           `}
           </Script>
-
-          {/* AdSense — Secondary load (prevents duplicate) */}
-          <Script
-            id="adsense-script"
-            src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-6584682991448565"
-            strategy="afterInteractive"
-            crossOrigin="anonymous"
-          />
         </AuthProvider>
       </body>
     </html>
