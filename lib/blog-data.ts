@@ -32,7 +32,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Use our free online word counter to instantly calculate word count, character count, and reading time for your documents, essays, and articles.',
         primaryKeyword: 'word counter online free',
         secondaryKeywords: ['character counter', 'reading time calculator'],
+<<<<<<< HEAD
         toolPath: '/tools/word-counter/',
+=======
+        toolPath: '/tools/word-counter',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -83,8 +87,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Case Converter', slug: 'case-converter', path: '/tools/case-converter/' },
             { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker/' }
+=======
+            { title: 'Case Converter', slug: 'case-converter', path: '/tools/case-converter' },
+            { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -93,7 +102,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Create unbreakable passwords instantly. Use our strong password generator online free tool to protect your accounts with random, secure passwords.',
         primaryKeyword: 'strong password generator online free',
         secondaryKeywords: ['random password generator', 'secure password'],
+<<<<<<< HEAD
         toolPath: '/tools/password-generator/',
+=======
+        toolPath: '/tools/password-generator',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -144,8 +157,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'PrimeLink Chat', slug: 'primelink-chat', path: '/tools/primelink/' },
             { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64/' }
+=======
+            { title: 'PrimeLink Chat', slug: 'primelink', path: '/tools/primelink' },
+            { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -154,7 +172,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Resize image without quality loss. Use our image resizer online free to compress image online instantly inside your browser.',
         primaryKeyword: 'image resizer online free',
         secondaryKeywords: ['compress image online', 'resize image without quality loss'],
+<<<<<<< HEAD
         toolPath: '/tools/image-resizer/',
+=======
+        toolPath: '/tools/image-resizer',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '4 min read',
         content: {
             intro: '',
@@ -205,8 +227,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Color Tools', slug: 'color-tools', path: '/tools/color-tools/' },
             { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64/' }
+=======
+            { title: 'Color Tools', slug: 'color-tools', path: '/tools/color-tools' },
+            { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -215,7 +242,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Use our Base64 encode decode online free tool to instantly translate text and data. The fastest base64 encoder and decoder for developers.',
         primaryKeyword: 'base64 encode decode online free',
         secondaryKeywords: ['base64 encoder', 'base64 decoder'],
+<<<<<<< HEAD
         toolPath: '/tools/base64/',
+=======
+        toolPath: '/tools/base64',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -266,8 +297,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Online Compiler', slug: 'online-compiler', path: '/tools/online-compiler/' },
             { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker/' }
+=======
+            { title: 'Online Compiler', slug: 'online-compiler', path: '/tools/online-compiler' },
+            { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -276,7 +312,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Effortlessly format your text. Use our text case converter online free to act as an uppercase converter, title case converter, and more.',
         primaryKeyword: 'text case converter online free',
         secondaryKeywords: ['uppercase converter', 'title case converter'],
+<<<<<<< HEAD
         toolPath: '/tools/case-converter/',
+=======
+        toolPath: '/tools/case-converter',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -327,8 +367,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Word Counter', slug: 'word-counter', path: '/tools/word-counter/' },
             { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker/' }
+=======
+            { title: 'Word Counter', slug: 'word-counter', path: '/tools/word-counter' },
+            { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -337,7 +382,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Run code instantly without installing IDEs. Use our online compiler free to run python online, compile C++, JS, and more natively.',
         primaryKeyword: 'online compiler free',
         secondaryKeywords: ['run python online', 'compile code online'],
+<<<<<<< HEAD
         toolPath: '/tools/online-compiler/',
+=======
+        toolPath: '/tools/online-compiler',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '4 min read',
         content: {
             intro: '',
@@ -388,8 +437,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64/' },
             { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker/' }
+=======
+            { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64' },
+            { title: 'Diff Checker', slug: 'diff-checker', path: '/tools/diff-checker' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -398,7 +452,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Discover the perfect shade for your project. Use our color picker online free to act as a hex color picker and color palette generator.',
         primaryKeyword: 'color picker online free',
         secondaryKeywords: ['hex color picker', 'color palette generator'],
+<<<<<<< HEAD
         toolPath: '/tools/color-tools/',
+=======
+        toolPath: '/tools/color-tools',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -449,8 +507,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Image Resizer', slug: 'image-resizer', path: '/tools/image-resizer/' },
             { title: 'Case Converter', slug: 'case-converter', path: '/tools/case-converter/' }
+=======
+            { title: 'Image Resizer', slug: 'image-resizer', path: '/tools/image-resizer' },
+            { title: 'Case Converter', slug: 'case-converter', path: '/tools/case-converter' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -459,7 +522,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Stop hunting for changes manually. Use our diff checker online free to compare two text files online and highlight coding differences instantly.',
         primaryKeyword: 'diff checker online free',
         secondaryKeywords: ['compare two text files online', 'text difference checker'],
+<<<<<<< HEAD
         toolPath: '/tools/diff-checker/',
+=======
+        toolPath: '/tools/diff-checker',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -510,8 +577,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Online Compiler', slug: 'online-compiler', path: '/tools/online-compiler/' },
             { title: 'Case Converter', slug: 'case-converter', path: '/tools/case-converter/' }
+=======
+            { title: 'Online Compiler', slug: 'online-compiler', path: '/tools/online-compiler' },
+            { title: 'Case Converter', slug: 'case-converter', path: '/tools/case-converter' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -520,7 +592,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Chat safely and anonymously. Generate a PrimeLink to start a secure, private chat online no signup free. True end-to-end data privacy.',
         primaryKeyword: 'private chat online no signup free',
         secondaryKeywords: ['secure chat online', 'anonymous chat room'],
+<<<<<<< HEAD
         toolPath: '/tools/primelink/',
+=======
+        toolPath: '/tools/primelink',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '4 min read',
         content: {
             intro: '',
@@ -571,8 +647,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'Password Generator', slug: 'password-generator', path: '/tools/password-generator/' },
             { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64/' }
+=======
+            { title: 'Password Generator', slug: 'password-generator', path: '/tools/password-generator' },
+            { title: 'Base64 Converter', slug: 'base64-converter', path: '/tools/base64' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     },
     {
@@ -581,7 +662,11 @@ export const blogPosts: BlogPost[] = [
         metaDescription: 'Hide your secret messages, redirects, and images inside a secure, password-protected link vault.',
         primaryKeyword: 'link vault online free',
         secondaryKeywords: ['secure hidden links', 'password protect url'],
+<<<<<<< HEAD
         toolPath: '/tools/link-vault/',
+=======
+        toolPath: '/tools/link-vault',
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         readTime: '3 min read',
         content: {
             intro: '',
@@ -632,8 +717,13 @@ export const blogPosts: BlogPost[] = [
             }
         ],
         relatedTools: [
+<<<<<<< HEAD
             { title: 'PrimeLink Chat', slug: 'primelink-chat', path: '/tools/primelink/' },
             { title: 'Password Generator', slug: 'password-generator', path: '/tools/password-generator/' }
+=======
+            { title: 'PrimeLink Chat', slug: 'primelink', path: '/tools/primelink' },
+            { title: 'Password Generator', slug: 'password-generator', path: '/tools/password-generator' }
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
         ]
     }
 ];

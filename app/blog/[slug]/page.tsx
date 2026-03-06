@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { blogPosts } from '@/lib/blog-data';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 // 1. Generate Static Params for all 10 blog posts
 export async function generateStaticParams() {
@@ -96,6 +97,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <script
                 type="application/ld+json"
                 dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+            />
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Home', item: '/' },
+                    { name: 'Blog', item: '/blog/' },
+                    { name: post.title, item: `/blog/${post.slug}/` },
+                ]}
             />
 
             <article className="min-h-0 sm:min-h-screen bg-white pb-8 sm:pb-20">
@@ -221,7 +229,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                             {post.relatedTools.map((tool) => (
                                 <Link
                                     key={tool.slug}
-                                    href={`/blog/${tool.slug}`}
+                                    href={`/blog/${tool.slug}/`}
                                     className="px-6 py-3 bg-gray-50 border border-gray-200 rounded-xl text-black font-medium hover:border-black hover:bg-white transition-all shadow-sm hover:shadow-md"
                                 >
                                     Read about {tool.title}

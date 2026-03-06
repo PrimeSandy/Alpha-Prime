@@ -5,20 +5,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { useSession, signIn, signOut } from "next-auth/react";
-import { Menu } from 'lucide-react';
-import { X } from 'lucide-react';
-import { Home } from 'lucide-react';
-import { Info } from 'lucide-react';
-import { ChevronDown } from 'lucide-react';
-import { Type } from 'lucide-react';
-import { KeyRound } from 'lucide-react';
-import { Image as ImageIcon } from 'lucide-react';
-import { FileCode2 } from 'lucide-react';
-import { ALargeSmall } from 'lucide-react';
-import { Code2 } from 'lucide-react';
-import { Palette } from 'lucide-react';
-import { ScanText } from 'lucide-react';
-import { Lock, LockKeyhole } from 'lucide-react';
+import { Menu, X, Home, Info, ChevronDown, Type, KeyRound, Image as ImageIcon, FileCode2, ALargeSmall, Code2, Palette, ScanText, Lock, LockKeyhole } from 'lucide-react';
 
 const TOOLS = [
     { name: 'PrimeLink Chat', href: '/tools/primelink/', icon: Lock },
@@ -56,10 +43,8 @@ const Header = () => {
     }, []);
 
     useEffect(() => {
-        setTimeout(() => {
-            setIsMobileMenuOpen(false);
-            setToolsOpen(false);
-        }, 0);
+        setIsMobileMenuOpen(false);
+        setToolsOpen(false);
     }, [pathname]);
 
     const routeTitles: Record<string, string> = {
@@ -84,8 +69,7 @@ const Header = () => {
     const currentTitle = routeTitles[pathname] || 'AlphaPrime';
 
     return (
-        <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/95 backdrop-blur-md border-black/10 shadow-sm' : 'bg-white border-gray-200'
-            }`}>
+        <header className={`fixed top-0 w-full z-50 transition-all duration-300 border-b ${scrolled ? 'bg-white/95 backdrop-blur-md border-black/10 shadow-sm' : 'bg-white border-gray-200'}`}>
             <div className="container mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex items-center justify-between h-16">
                     {/* Logo */}
@@ -119,8 +103,7 @@ const Header = () => {
                                                 key={href}
                                                 href={href}
                                                 onClick={() => setToolsOpen(false)}
-                                                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm transition-all duration-200 ${pathname === href ? 'bg-black/5 text-black font-medium' : 'text-gray-700 hover:bg-gray-50 hover:text-black'
-                                                    }`}
+                                                className={`flex items-center gap-2.5 px-3 py-2 rounded-xl text-sm transition-all duration-200 ${pathname === href ? 'bg-black/5 text-black font-medium' : 'text-gray-700 hover:bg-gray-50 hover:text-black'}`}
                                             >
                                                 <Icon className="w-4 h-4 flex-shrink-0 text-gray-500" />
                                                 {name}
@@ -199,8 +182,7 @@ const Header = () => {
                             <div className="mt-3 mb-1 px-3 text-xs font-bold text-gray-700 uppercase tracking-wider">Tools</div>
                             {TOOLS.map(({ name, href, icon: Icon }) => (
                                 <Link key={href} href={href} onClick={() => setIsMobileMenuOpen(false)}
-                                    className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === href ? 'bg-black/5 text-black font-medium' : 'text-gray-800 hover:bg-gray-50 hover:text-black'
-                                        }`}>
+                                    className={`flex items-center gap-3 p-3 rounded-xl transition-colors ${pathname === href ? 'bg-black/5 text-black font-medium' : 'text-gray-800 hover:bg-gray-50 hover:text-black'}`}>
                                     <Icon className="w-5 h-5 text-gray-700" /> {name}
                                 </Link>
                             ))}

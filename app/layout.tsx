@@ -34,9 +34,27 @@ export const metadata: Metadata = {
     default: 'AlphaPrime - Free Privacy-First Web Tools',
     template: '%s – AlphaPrime',
   },
-  description: 'Free privacy-first web tools. Fast, simple, and runs entirely in your browser. No tracking, no data collection.',
-  keywords: ['free web tools', 'privacy tools', 'online compiler', 'password generator', 'image resizer', 'AlphaPrime'],
+  description: 'Free privacy-first web tools. Fast, simple, and runs entirely in your browser. No tracking, no data collection. Online compiler, password generator, image resizer, and more.',
+  keywords: [
+    'free web tools',
+    'privacy tools',
+    'online compiler',
+    'password generator',
+    'image resizer',
+    'AlphaPrime',
+    'web developer tools',
+    'secure chat',
+    'link vault',
+    'browser tools'
+  ],
   authors: [{ name: 'AlphaPrime', url: 'https://alphaprime.co.in' }],
+  creator: 'AlphaPrime',
+  publisher: 'AlphaPrime',
+  formatDetection: {
+    email: false,
+    address: false,
+    telephone: false,
+  },
   alternates: {
     canonical: 'https://alphaprime.co.in/',
   },
@@ -46,7 +64,13 @@ export const metadata: Metadata = {
     title: 'AlphaPrime - Free Privacy-First Web Tools',
     description: 'Free privacy-first web tools. Fast, simple, and runs entirely in your browser.',
     url: 'https://alphaprime.co.in',
-    images: [{ url: '/logo.png', width: 512, height: 512, alt: 'AlphaPrime Logo' }],
+    images: [{
+      url: '/logo.png',
+      width: 1200,
+      height: 630,
+      alt: 'AlphaPrime - Professional Web Tools'
+    }],
+    locale: 'en_US',
   },
   twitter: {
     card: 'summary_large_image',
@@ -54,10 +78,22 @@ export const metadata: Metadata = {
     title: 'AlphaPrime - Free Privacy-First Web Tools',
     description: 'Free privacy-first web tools. Fast, simple, and runs entirely in your browser.',
     images: ['/logo.png'],
+    creator: '@alphaprimecoin',
   },
-  robots: { index: true, follow: true },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      'max-video-preview': -1,
+      'max-image-preview': 'large',
+      'max-snippet': -1,
+    },
+  },
   other: {
     'google-adsense-account': 'ca-pub-6584682991448565',
+    'apple-mobile-web-app-title': 'AlphaPrime',
   },
   icons: {
     icon: [

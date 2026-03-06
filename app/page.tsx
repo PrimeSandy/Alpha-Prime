@@ -96,14 +96,22 @@ export default function Home() {
                   <h2 className="text-2xl font-bold text-black tracking-tight mb-2">Latest Tutorials &amp; Guides</h2>
                   <p className="text-gray-500">Learn how to maximize your productivity with our tools.</p>
                 </div>
+<<<<<<< HEAD
                 <Link href="/blog/" className="hidden sm:inline-flex text-sm font-semibold text-black hover:text-gray-600 transition-colors">
+=======
+                <Link href="/blog" className="hidden sm:inline-flex text-sm font-semibold text-black hover:text-gray-600 transition-colors">
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
                   View all articles &rarr;
                 </Link>
               </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 text-left">
                 {blogPosts.slice(0, 3).map((post) => (
+<<<<<<< HEAD
                   <Link key={post.slug} href={`/blog/${post.slug}/`} className="group block h-full flex flex-col p-6 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black/30 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+=======
+                  <Link key={post.slug} href={`/blog/${post.slug}`} className="group block h-full flex flex-col p-6 rounded-2xl bg-zinc-50 border border-zinc-200 hover:border-black/30 hover:shadow-md transition-all duration-200 hover:-translate-y-0.5">
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
                     <div className="flex-grow">
                       <h3 className="font-bold text-black mb-3 text-lg group-hover:underline underline-offset-4 decoration-black/30 line-clamp-2">
                         {post.title}
@@ -119,7 +127,11 @@ export default function Home() {
                 ))}
               </div>
               <div className="mt-8 sm:hidden">
+<<<<<<< HEAD
                 <Link href="/blog/" className="inline-block w-full text-center py-3 rounded-xl bg-zinc-100 text-black font-semibold hover:bg-zinc-200 transition-colors">
+=======
+                <Link href="/blog" className="inline-block w-full text-center py-3 rounded-xl bg-zinc-100 text-black font-semibold hover:bg-zinc-200 transition-colors">
+>>>>>>> 4c1ddd8d65b13ce0c45a53c7b7aa2c29c4274478
                   View all articles
                 </Link>
               </div>

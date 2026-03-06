@@ -2,6 +2,7 @@ import React from 'react';
 import Link from 'next/link';
 import { Metadata } from 'next';
 import { blogPosts } from '@/lib/blog-data';
+import BreadcrumbSchema from '@/components/BreadcrumbSchema';
 
 export const metadata: Metadata = {
     title: 'AlphaPrime Blog - Web Tools & Tech Tutorials',
@@ -21,9 +22,15 @@ export const metadata: Metadata = {
 export default function BlogIndex() {
     return (
         <div className="min-h-0 sm:min-h-screen bg-white">
+            <BreadcrumbSchema
+                items={[
+                    { name: 'Home', item: '/' },
+                    { name: 'Blog', item: '/blog/' },
+                ]}
+            />
             <section className="pt-8 pb-6 sm:pt-32 sm:pb-16 px-4 bg-gray-50 border-b border-gray-200">
                 <div className="container mx-auto max-w-4xl text-center">
-                    {/* Breadcrumbs */}
+                    {/* Breadcrumbs UI */}
                     <nav className="mb-6 text-sm text-gray-500 font-medium">
                         <ol className="flex items-center justify-center gap-2">
                             <li>
