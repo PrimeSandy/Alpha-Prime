@@ -105,6 +105,8 @@ export const metadata: Metadata = {
 };
 
 
+import AdminBanner from '@/components/AdminBanner';
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -126,9 +128,12 @@ export default function RootLayout({
       <body className={`${manrope.variable} ${spaceGrotesk.variable} min-h-screen bg-white text-black antialiased flex flex-col`}>
         <AuthProvider>
           <Header />
-          <main className="flex-grow pt-16 w-full">
-            {children}
-          </main>
+          <div className="pt-16">
+            <AdminBanner />
+            <main className="flex-grow w-full">
+              {children}
+            </main>
+          </div>
           <Footer />
 
           {/* Google AdSense script — optimized with afterInteractive strategy */}
